@@ -20,13 +20,13 @@ from statistics import mean
 from typing import Any
 
 if __package__:
-    from . import llm_recommender_prompts as prompts
+    from . import IQ_recommender_prompts as prompts
     from .data_utils import DEFAULT_SCHEMA, fingerprint, label_audit, read_jsonl, schema_fields, write_json_atomic
     from .recommender_utils import OllamaClient, build_persona_context, item_context, stable_seed
     from .native_persona import build_native_persona_context, SIMULATOR_PROTOCOL
     from .preference_evaluation import reference_atoms, score_atom_judgments
 else:
-    import llm_recommender_prompts as prompts
+    import IQ_recommender_prompts as prompts
     from data_utils import DEFAULT_SCHEMA, fingerprint, label_audit, read_jsonl, schema_fields, write_json_atomic
     from recommender_utils import OllamaClient, build_persona_context, item_context, stable_seed
     from native_persona import build_native_persona_context, SIMULATOR_PROTOCOL
@@ -1424,10 +1424,10 @@ def execute(output: Path, cfg: dict, users: list, manifest: dict, max_users: int
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--task', choices=['movie', 'music'], default='movie')
-    parser.add_argument("--config", type=Path, default=ROOT / "llm_recommender_config.json")
+    parser.add_argument("--config", type=Path, default=ROOT / "IQ_recommender_config.json")
     parser.add_argument("--personas", type=Path, default=ROOT / "sampled_personas.jsonl", help="Active personas (default: sampled_personas.jsonl)")
     parser.add_argument("--audits", type=Path, help="Targets and candidates (default: <task>_persona_audits.jsonl)")
-    parser.add_argument("--items", type=Path, help="Item pool (default: the selected task's 1000-item pool)")
+    parser.add_argument("--items", type=Path)
     parser.add_argument("--schema", type=Path, default=DEFAULT_SCHEMA)
     parser.add_argument("--method", choices=[*METHODS, "pebol", "decisive", "gate"], default="iq")
     parser.add_argument('--eig-stop-policy', choices=['cost', 'budget'],
@@ -1444,13 +1444,13 @@ def main(argv=None) -> int:
     parser.add_argument("--decisive-config", type=Path, help="DECISIVE-specific configuration for --method decisive")
     parser.add_argument("--gate-config", type=Path, help="GATE-specific configuration for --method gate")
     parser.add_argument("--output", type=Path)
-    parser.add_argument("--expected-users", type=int, default=20,
+    parser.add_argument("--expected-users", type=int, default=200,
                         help="Sample this many accepted users when the unfinished-ID list is empty (default: 20)")
     parser.add_argument('--has-not-finished-user-id-list', '--has_not_finished_user_id_list', nargs='*',
                         default=[],
                         help='Only select these persona_id strings; an empty list uses normal sampling')
     parser.add_argument("--prepare-only", action="store_true", help="Validate inputs without contacting any backend")
-    parser.add_argument("--max-users", type=int, default=1,help="Limit execution for debugging; report stays partial")
+    parser.add_argument("--max-users", type=int, default=200,help="Limit execution for debugging; report stays partial")
     args = parser.parse_args(argv)
     if args.expected_users < 1:
         parser.error('--expected-users must be positive')
