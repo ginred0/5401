@@ -1,0 +1,18 @@
+{
+  "query": {
+    "item_selection": "ucb",
+    "aspect_extraction": "val",
+    "aspect_gen_template": "pointwise_aspect_v_generation_movies_3FS_3words.jinja2",
+    "query_gen_template": "pointwise_query_generation_v.jinja2"
+  },
+  "pe": {
+    "pe_module_name": "DT",
+    "response_update": "individual",
+    "num_recs": 10
+  },
+  "item_scoring": {
+    "item_scorer_name": "OllamaScorer",
+    "preprocess_query": true,
+    "history_preprocessor_name": "AspectValuePreprocessor"
+  }
+}

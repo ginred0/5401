@@ -1,0 +1,8 @@
+{
+  "particles": 500,
+  "dirichlet_alpha": 1.0,
+  "kappa": 20.0,
+  "confidence_threshold": 0.85,
+  "max_factors": 24,
+  "min_eig_bits": 1e-12
+}

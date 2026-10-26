@@ -1,0 +1,82 @@
+
+Identify an important aspect of an item given the item description. The aspect should be different from any previously identified aspects and must not exceed 3 words. 
+
+Example 1:
+''''
+Item Description:
+****
+ -Movie Title: Social Network, The (2010) \n -Genres: Drama \n -Tags: computers, true story, Jesse Eisenberg, based on true story, hacking, college, dark comedy, internet, David Fincher, business, software developers, loneliness, nerds, based on a true story, witty, complex characters, facebook, friendship, social network, Justin Timberlake
+****
+
+Previously extracted aspects:
+****
+
+action
+
+comedy
+
+1990's
+
+horror
+
+drama
+
+2010's
+
+****
+
+Output: technology and society
+'''' 
+
+Example 2:
+''''
+Item Description:
+****
+ -Movie Title: Monsters, Inc. (2001) \n -Genres: Adventure, Animation, Children, Comedy, Fantasy \n -Tags: Pixar, funny, Comedy, cute, animation, Animation, Disney, innovative, hilarious, John Goodman, Steve Buscemi, monsters, original, Oscar (Best Music - Original Score), Pixar animation, animated, Billy Crystal, CGI, Oscar (Best Music - Original Song), comedy
+****
+
+Previously extracted aspects:
+****
+****
+
+Output: children
+''''
+
+Example 3:
+''''
+Item Description:
+****
+ -Movie Title: Runaway Train (1985) \n -Genres: Action, Adventure, Drama, Thriller \n -Tags: prison escape, Andrei Konchalovsky, Andrey Konchalovskiy, trains, Betamax, CLV, Director: Andrey Konchalovskiy, Eric Roberts, Jon Voight, Kenneth McMillan, Kyle T. Heffner, Rebecca De Mornay, T.K. Carter, Writer: Akira Kurosawa, Writer: Djordje Milicevic, Writer: Edward Bunker, Writer: Hideo Oguni, Writer: Paul Zindel, Writer: Ry\u00fbz\u00f4 Kikushima, alaska
+****
+
+Previously extracted aspects:
+****
+
+comedy
+
+thriller
+
+prison escape
+
+****
+
+Output: 80's
+''''
+
+Input:
+''''
+Item Description:
+****
+{{ item_desc }}
+****
+
+Previously extracted aspects:
+****
+{% if aspects -%}
+{% for aspect in aspects %}
+{{ aspect['aspect_value'] }}
+{% endfor %}
+{% endif -%}
+****
+
+Output: 

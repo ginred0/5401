@@ -1,0 +1,7 @@
+{
+  "repository": "https://github.com/alextamkin/generative-elicitation",
+  "license": "MIT",
+  "paper": " ELICITING HUMAN PREFERENCES WITH LANGUAGE MODELS.pdf",
+  "variant": "Generative yes-or-no questions (questions_yn), Section 3.1",
+  "prompts": "Appendix A.1 question generation and A.2 content recommendation prediction"
+}
