@@ -1,0 +1,13 @@
+{
+  "repository": "https://github.com/alextamkin/generative-elicitation",
+  "commit": "da7c9f7a9030ebac1551cf3a8fe9af21ef56b928",
+  "license": "MIT",
+  "paper": "rec_simulator/ ELICITING HUMAN PREFERENCES WITH LANGUAGE MODELS copy.pdf",
+  "paper_sha256": "8518ba30a9e9bde6f807c577ef1d60e05f72b4f44c8af95e6b960bb45eeb785b",
+  "variant": "Generative yes-or-no questions (questions_yn), Section 3.1",
+  "prompts": "Appendix A.1 question generation and A.2 content recommendation prediction",
+  "upstream_files_sha256": {
+    "base_active_learning_agent.py": "d77235126e7fbda4be1258d564dbd7882da66dbcf581a17470b339d5fcee596d",
+    "generative_questions_agent.py": "f0a4d81fb8ae1080a2feb51496c422688e5be94e6250449b46297a5ec12c4c11"
+  }
+}

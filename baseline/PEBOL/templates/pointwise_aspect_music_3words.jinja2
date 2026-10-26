@@ -1,0 +1,29 @@
+Identify one important listening-preference aspect of a music recording from its
+supplied description. Use at most 3 words. Choose a different aspect from those
+already extracted. Use only stated metadata; do not infer a genre, instrument,
+tempo or mood from a title alone.
+
+Example 1:
+Description: Recording A. Genres: Jazz. Instrumentation: piano trio.
+Previously extracted aspects: jazz
+Output: piano trio
+
+Example 2:
+Description: Recording B. Genres: Folk. Format: live performance.
+Previously extracted aspects: folk
+Output: live performance
+
+Example 3:
+Description: Recording C. Genres: Classical. Instrumentation: string quartet.
+Previously extracted aspects: string quartet
+Output: classical
+
+Item description:
+{{ item_desc }}
+
+Previously extracted aspects:
+{% for aspect in aspects %}
+{{ aspect['aspect_value'] }}
+{% endfor %}
+
+Output:
